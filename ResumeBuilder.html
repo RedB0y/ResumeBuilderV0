@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Resume Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+	<style type="text/css">
+		body , html{
+			/*padding:0;
+			margin: 0;*/
+			font-size: 1.2rem;
+		}
+		table,th,td{
+			border:1px solid black;
+			border-collapse:collapse;
+			width: 100%;
+
+		}
+		th,td{
+			padding: 15px;
+
+		}
+		td{
+			text-align: center;
+		}
+		.container{
+			border: 1px solid black;
+			display: flex;
+			flex-direction: column;
+			align-content:  flex-start;
+			padding: 50px;
+			/*justify-content: center;*/
+		}
+		.S2{
+			padding: 10px;
+		}
+		.Ss1{
+			padding: 20px;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			border-bottom: 2px solid black;
+		}
+		.addr{
+			width: 30vw;
+			height: auto;
+			border: 1px solid black;
+		}
+		p{
+			display: inline-block;
+		}
+		.pop{
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			position: absolute;
+			width:60vw;
+			height: auto;
+			background-color: white;
+			border: 1px solid black;
+			padding: 20px;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%);
+			transition: all 1s ease-in;
+			z-index: 1000;
+			font-family: 'Noto Sans', sans-serif;
+			overflow-y: auto;
+
+
+		}
+		li{
+			margin-top: 30px;
+		}
+		input{
+			box-sizing: border-box;
+			padding: 10px;
+			font-family: 'Noto Sans', sans-serif;
+			font-weight: 500;
+			font-size: 0.8rem;
+
+		}
+
+		.btn{
+			width:50%;
+			height:auto;
+			padding: 10px;
+			border: none;
+			background-color: rgb(66,133,244);
+			align-self: center;
+			margin-top: 20px;
+			text-align: center;
+			
+			font-family: 'Noto Sans', sans-serif;
+			font-weight: 500;
+			font-size: 1rem;
+
+		}
+		.S1{
+			
+			opacity: 1;
+		}
+
+		.invis{
+			opacity: 0;
+			display: none;
+			pointer-events: none;
+			transition: all 1s ease-in;
+			
+
+
+		}
+
+		.taB{
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			justify-content: space-between;
+			position: absolute;
+			width:40vw;
+			height:auto;
+			overflow-y: auto;
+			background-color: white;
+			border: 1px solid black;
+			padding: 20px;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%);
+			transition: all 1s ease-in;
+			z-index: 1000;
+
+			font-family: 'Noto Sans', sans-serif;
+			font-weight: 500;
+			font-size: 1rem;
+			
+		}
+		.s7D{
+			height: auto;
+			position: absolute;
+			background:white;
+			overflow-y:visible; 
+		}
+		.S1,.S2,.S3,.S4,.S5,.S6,.S7,.S8{
+			position: relative;
+			
+		}
+
+		.pdfD{
+			width:15vw;
+			z-index: 10;
+			height: 10vh;
+			background-color: rgb(66,133,244);
+			position: sticky;
+			top:0;
+			left:100%   ;
+		}
+
+		#btnDiv{
+			color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 400;
+			font-size: 0.9rem;
+			outline: none;
+			border: none;
+
+			font-family: 'Noto Sans', sans-serif;
+			font-weight: 500;
+			font-size: 0.9rem;
+
+		}
+		textarea{
+			font-family: 'Noto Sans', sans-serif;
+			font-weight: 500;
+			font-size: 0.9rem;	
+
+		}
+
+	</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>	
+<script src="html2can.js"></script>
+</head>
+<body>
+		
+			<button id="btnDiv" class="pdfD"> Download </button>
+	
+	<div class="container" id="pf">
+
+
+		<div class="S1">
+			<div>
+				<div id="s1"class="taB invis"> 
+
+				<a style=" color:black;align-self: flex-end;font-size: 1.5rem;text-decoration: none;" href="javascript:closeP('s1')">X</a>
+				
+				<span>Name:</span>	
+				<input type="text" >
+				<span>MobileNumber:</span>	
+				<input type="text" >
+				<span>Email:</span>	
+				<input type="text" >
+				<span>Address:</span>	
+				<input type="text" >
+				<button style="z-index: 100" class="btn" onclick="s1Add()">ADD</button>
+				
+				</div>
+
+			</div>
+   			<h1 id="name" style="text-align: center;"> Name  </h1>
+
+
+			<div class="Ss1">
+				<div class="mn">
+				Mobile:  <p id="mno">m-number</p>	
+				<br>
+				Email:  <p id="eml">email</p>
+
+				<br>
+				<a href="javascript:openP('s1')">insert</a> 
+
+				</div>
+
+				<div class="addr">
+					<p id="addr">address</p>
+				
+				</div>
+
+				
+			</div>
+
+			
+		</div>
+
+		<div class="S2">
+
+
+			<h2>Career Objective:</h2>
+			<p id="CO">To work for an organization that helps to improve and contribute my skills & knowledge to the development of the organization. </p>
+
+			<div class="taB invis " id="coP"> 
+
+				<a style=" color:black;align-self: flex-end;font-size: 1.5rem;text-decoration: none;" href="javascript:closeP('coP')">X</a>
+					<h2 style="text-align: center;">  Career Objective </h2>
+				<textarea rows="8" cols="50"></textarea>
+				<button class="btn" onclick="addCO()">ADD</button>
+			</div>
+
+
+
+
+
+			<a href="javascript:openP('coP')">insert</a>
+		</div>
+
+
+
+
+		<div class="S3">
+
+			<h2>Educational Qualifications:</h2>
+
+				<table  id="tbl">
+					<tr>
+						<th>Course</th>
+						<th>Specialization</th>
+						<th >Institution</th>
+						<th >Board/University</th>
+						<th>Year of passing</th>
+						<th>Percentage</th>
+					</tr>	
+
+			</table>
+
+
+
+				<div class="pop invis" id="eq">
+
+				<a style=" align-self: flex-end;font-size: 1.5rem;text-decoration: none;" href="javascript:closeP('eq')">X</a>
+				<h2 style="text-align: center;"> Educational Qualifications </h2>
+				<span>Course</span>	
+				<input type="text" >
+				<span>Specialization</span>	
+				<input type="text" >
+				<span>Institution</span>	
+				<input type="text" >
+				<span>Board/University</span>	
+				<input type="text" >
+				<span>Year Of Passing</span>	
+				<input type="text" >
+				<span>Percentage</span>	
+				<input type="text" >
+				<button style="text-align: center;" class="btn" onclick="eqa()">ADD</button>
+
+				</div>
+
+
+				<a href="javascript:openP('eq')">insert</a>
+
+				</div>
+
+
+
+
+	<div class="S4">
+		<h2>Academic Activities:</h2>
+		<ul id="aal">
+			
+		</ul>	
+
+			<div class="taB invis " id="aa"> 
+				<a style=" color:black;align-self: flex-end;font-size: 1.5rem;text-decoration: none;" href="javascript:closeP('aa')">X</a>
+				<h2 style="text-align: center;"> Academic Activities </h2>
+				<textarea id="s4ta" rows="8" cols="50"></textarea>
+				<button class="btn" onclick="addLi1('s4ta','aal')">ADD</button>
+			</div>
+
+
+		<a href="javascript:openP('aa')">insert</a>
+	</div>
+
+	<div class="S5">
+		<h2>Technical Skills:</h2>
+		<ul id="tsl">
+		
+		</ul>	
+			<div class="taB invis " id="ts"> 
+				<a style=" color:black;align-self: flex-end;font-size: 1.5rem;text-decoration: none;" href="javascript:closeP('ts')">X</a>
+				<h2 style="text-align: center;"> Technical Skills </h2>
+				<textarea id="s5ta" rows="8" cols="50"></textarea>
+				<button class="btn" onclick="addLi1('s5ta','tsl')">ADD</button>
+			</div>
+
+
+		<a href="javascript:openP('ts')">insert</a>	
+	</div>
+
+	<div class="S6">
+		<h2>Interpersonal Skills:</h2>
+
+		<ul id="isl">
+			
+		</ul>
+			<div class="taB invis " id="is"> 
+				<a style=" color:black;align-self: flex-end;font-size: 1.5rem;text-decoration: none;" href="javascript:closeP('is')">X</a>
+				<h2 style="text-align: center;"> Interpersonal Skills </h2>
+				<textarea id="s6ta" rows="8" cols="50"></textarea>
+				<button class="btn" onclick="addLi1('s6ta','isl')">ADD</button>
+			</div>
+
+		<a href="javascript:openP('is')">insert</a>
+	</div>
+
+
+	<div class="S7">
+		<h2>Personal Details:</h2>
+		<div><p style="font-weight: 560">FullName:</p> <span id="pdfn"> </span></div>
+		<div><p style="font-weight: 560">Date of Birth:</p> <span id="dob"> </span></div>
+		<div><p style="font-weight: 560">Father's Name:</p> <span id="fan"> </span></div>
+		<div><p style="font-weight: 560">Languages Known:</p> <span id="lkn"> </span></div>
+		<div><p style="font-weight: 560">Hobbies:</p> <span id="hbs"> </span></div>
+		<div><p style="font-weight: 560">Nationality:</p> <span id="nation"> </span></div>
+		<br>
+
+		<div class="pop invis s7D" id="pd">
+			<a style=" color:black;align-self: flex-end;font-size: 1.5rem;text-decoration: none;" href="javascript:closeP('pd')">X</a>	
+
+			<h2 style="text-align: center;"> Personal Details </h2>
+				<span>FullName</span>	
+				<input type="text" >
+				<span>Date Of Birth</span>	
+				<input type="text" >
+				<span>Father's Name</span>	
+				<input type="text" >
+				<span>Languages Known</span>	
+				<input type="text" >
+				<span>Hobbies</span>	
+				<input type="text" >
+				<span>Nationality</span>	
+				<input type="text" >
+				<button class="btn" onclick="pda()">Add</button>		
+
+		</div>
+
+		<a href="javascript:openP('pd')">insert</a>
+	</div>
+
+	<div class="S8">
+		<br><br><br>
+		<h2>Declaration:</h2>
+		<span>I hereby declare that the above furnished information is true to the best of my knowledge and that Iwill be held responsible for any deviation from them at a last stage.</span>
+		<br>
+		<span id="dname" style="float: right;font-weight: bold; font-size:1.6rem"> </span>
+	</div>
+
+	</div>
+
+
+	
+
+
+	<!--<script type="text/javascript" src="jsPDF-master\dist\jspdf.es"></script>-->
+	<script type="text/javascript">
+	
+		var btn = document.querySelectorAll('.btn');
+		var taB = document.querySelectorAll('.taB');
+		var pop = document.querySelectorAll('.pop');
+		var aE = document.querySelectorAll('a');
+	var opt = {
+ 
+  filename:     'myfile.pdf',
+  image:        { type: 'jpeg', quality: 1 },
+  html2canvas:  { scale: 1 },
+  jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+};
+		console.log(aE);
+		var count=0;
+		window.onload = function(){
+			document.getElementById('btnDiv').addEventListener("click",()=>{
+				aE.forEach(visi);
+				btn.forEach(visi);
+				taB.forEach(visi);
+				pop.forEach(visi);
+				const pf = this.document.getElementById('pf');
+				pf.style.transform="scale(0.8)";
+				pf.style.transformOrigin="0.0";
+				pf.style.margin="0 -25% 0 0";
+				html2pdf().from(pf).set(opt).save();
+
+				btn.forEach(visiR);
+				
+
+		})
+		}
+
+
+		function visi(obj){
+			obj.style.display="none";
+
+		}
+
+		function visiR(obj){
+			obj.style.display="flex";
+			obj.style.justifyContent="center";
+			obj.style.alignItems="center";
+		}
+	
+		var tbl = document.getElementById("tbl");
+		var eq = document.getElementById("eq");
+		var coP = document.getElementById("coP");
+
+		var s1N = document.getElementById("name");
+		var s1Mail = document.getElementById("mno");
+		var s1Number = document.getElementById("eml");
+		var s1Addr = document.getElementById("addr");
+
+	 	var pdfn = document.getElementById("pdfn");
+		var dob = document.getElementById("dob");
+		var fan = document.getElementById("fan");
+		var lkn = document.getElementById("lkn");
+		var hbs = document.getElementById("hbs");
+		var nation = document.getElementById("nation");
+
+
+		s1D = [s1N,s1Mail,s1Number,s1Addr];
+
+		pdA=[pdfn,dob,fan,lkn,hbs,nation];
+
+		console.log(pdA);
+
+
+		function s1Add(){
+			var s1v = document.querySelectorAll('#s1 input');
+			var dec = document.getElementById('dname');
+			for(i=0;i<4;i++){
+				s1D[i].innerText=s1v[i].value;
+			}
+
+			dec.innerText=s1v[0].value;
+		}
+		function eqa(){
+			var vals = document.querySelectorAll('#eq  input');
+			var tbl = document.getElementById("tbl");
+			var row = tbl.insertRow(1);
+			var colA = [];
+		for(i=0;i<6;i++)
+		{
+			colA[i]=row.insertCell(i);
+			colA[i].innerText=vals[i].value;
+		}
+		}
+
+
+		function addCO(){
+			var id = "#coP";
+			var CO = document.getElementById("CO");
+			var vals = document.querySelectorAll(id+" textarea");
+			CO.innerText=vals[0].value;
+			vals[0].value=" " ;
+		}
+		function openP(str){
+			var obj = document.getElementById(str);
+
+			obj.style.opacity="1";
+			obj.style.display="flex";
+			obj.style.pointerEvents="auto";
+
+		}
+		function closeP(str){
+			var obj = document.getElementById(str);
+			obj.style.opacity="0";
+			obj.style.display="none";
+			obj.style.pointerEvents="none";
+
+		}
+
+		function addLi1(str,liId){
+			
+			var obj = document.getElementById(str);
+			var lis = document.getElementById(liId);
+			var liI = document.createElement("LI");
+			var tnode = document.createTextNode(obj.value);
+			liI.appendChild(tnode);
+			lis.appendChild(liI);
+
+			obj.innerText=" ";
+		}
+
+		function pda(){
+			var lis = document.querySelectorAll("#pd input");
+			for(i=0;i<6;i++){
+				pdA[i].innerText=lis[i].value;
+			}
+		}
+
+		/*
+		function tins(){
+			eq.style.opacity="1";
+			eq.style.display="flex";
+			eq.style.pointerEvents="unset";
+			
+			
+		}
+		function ctins(){
+			
+			eq.style.opacity="0";
+			eq.style.display="none";
+			eq.style.pointerEvents="none";
+			
+
+		}
+
+		function cCOins(obj){
+			console.log(obj);
+			coP.style.pointerEvents="none";
+		
+		}*/
+
+	</script>
+</body>
+</html>
+
+
+
